@@ -14,6 +14,12 @@ const HandleAddTask =()=>{
   setTask(null);
 }
 
+const Completetask =(index)=>{
+  let itemsCopy =[...taskItems];
+  itemsCopy.slice(index,1);
+  setTaskItems(itemsCopy);
+}
+
   return (
     <View style={styles.container}>
       {/*Today task */}
