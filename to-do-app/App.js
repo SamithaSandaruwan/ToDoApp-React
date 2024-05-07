@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View ,TextInput, Keyboard} from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View ,TextInput, Keyboard,map} from 'react-native';
 import Task from './components/Task';
 
 export default function App() {
 
 const[task,setTask]=useState();
-const[taskItems,setTaskItems]=useState();
+const[taskItems,setTaskItems]=useState([]);
 
 const HandleAddTask =()=>{
   Keyboard.dismiss();
@@ -14,7 +14,7 @@ const HandleAddTask =()=>{
   setTask(null);
 }
 
-const Completetask =(index)=>{
+const CompleteTask =(index)=>{
   let itemsCopy =[...taskItems];
   itemsCopy.slice(index,1);
   setTaskItems(itemsCopy);
@@ -28,11 +28,13 @@ const Completetask =(index)=>{
           Today's Tasks</Text>
         <View style={styles.items}>
           {/* All Tasks */}
+          
           {
-            taskItems.map((item,index)=>{
+            
+            taskItems?.map((item,index)=>{
               return(
-                <TouchableOpacity key={index} onPress={()=>completeTask(index)}>
-                  <Task text={item}/>
+                <TouchableOpacity key={index} onPress={() => CompleteTask(index)}>
+                  <Task text={item} />
                 </TouchableOpacity>
               )
             })
