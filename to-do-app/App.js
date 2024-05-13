@@ -65,7 +65,7 @@ const deleteTask=(index)=>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#82E0AA',
+    backgroundColor: '#e9f9eb',
   },
   tasksWrapper:{
     paddingTop:60,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontColor:'#0B5345',
     backgroundColor:"#D5F5E3",
     borderRadius:20,
-    borderColor:"#0B53454",
+    borderColor:"#229954",
     borderWidth:1,
     width:270
   },
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius:20,
     justifyContent:"center",
     alignItems:"center",
-    borderColor:"#0B5345",
+    borderColor:"#229954",
     borderWidth:1,
   },
   addText:{
