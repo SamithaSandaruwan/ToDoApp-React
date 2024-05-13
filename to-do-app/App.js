@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
+import React,{ useState } from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View ,TextInput, Keyboard,map} from 'react-native';
 import Task from './components/Task';
 
@@ -8,17 +7,19 @@ export default function App() {
 const[task,setTask]=useState();
 const[taskItems,setTaskItems]=useState([]);
 
-const HandleAddTask =()=>{
+const handleAddTask =()=>{
   Keyboard.dismiss();
   setTaskItems([...taskItems,task])
   setTask(null);
 }
 
-const CompleteTask =(index)=>{
+const deleteTask=(index)=>{
   let itemsCopy =[...taskItems];
-  itemsCopy.slice(index,1);
+  itemsCopy.splice(index,1);
   setTaskItems(itemsCopy);
 }
+
+
 
   return (
     <View style={styles.container}>
@@ -28,17 +29,15 @@ const CompleteTask =(index)=>{
           Today's Tasks</Text>
         <View style={styles.items}>
           {/* All Tasks */}
-          
           {
-            
-            taskItems?.map((item,index)=>{
-              return(
-                <TouchableOpacity key={index} onPress={() => CompleteTask(index)}>
-                  <Task text={item} />
+            taskItems.map((item,index) =>{
+              return (
+                <TouchableOpacity key={index} onPress={()=>deleteTask(index)}>
+                  <Task  text={item}/>
                 </TouchableOpacity>
               )
+              
             })
-
           }
         </View>
       </View>
@@ -51,7 +50,7 @@ const CompleteTask =(index)=>{
       <TextInput style={styles.input} placeholder={"Write a task"} value={task} onChangeText={text =>setTask(text)}/>
 
 
-      <TouchableOpacity onPress={() => HandleAddTask()}>
+      <TouchableOpacity onPress={() => handleAddTask()}>
         <View style={styles.addWrapper}>
           <Text style={styles.addText}>+</Text>
         </View>
@@ -66,14 +65,15 @@ const CompleteTask =(index)=>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D6CFCB',
+    backgroundColor: '#82E0AA',
   },
   tasksWrapper:{
     paddingTop:60,
     paddingHorizontal:20,
   },
   sectionTitle:{
-    fontSize:24,
+    fontSize:32,
+    color:'#0B5345',
     fontWeight:"bold",
   },
   items:{
@@ -90,25 +90,26 @@ const styles = StyleSheet.create({
   input:{
     paddingVertical:15,
     paddingHorizontal:15,
-    backgroundColor:"#fff",
-    borderRadius:60,
-    borderColor:"#C0C0C0",
+    fontColor:'#0B5345',
+    backgroundColor:"#D5F5E3",
+    borderRadius:20,
+    borderColor:"#0B53454",
     borderWidth:1,
-    width:250
+    width:270
   },
   addWrapper:{
     width:60,
     height:60,
-    backgroundColor:"#fff",
-    borderRadius:60,
+    backgroundColor:"#D5F5E3",
+    borderRadius:20,
     justifyContent:"center",
     alignItems:"center",
-    borderColor:"#C0C0C0",
+    borderColor:"#0B5345",
     borderWidth:1,
   },
   addText:{
     fontSize:30,
-    color:'#D6CFCB',
+    color:'#0B5345',
   },
 
 });

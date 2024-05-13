@@ -8,7 +8,7 @@ const Task = (props) =>{
     <View style ={style.item}> 
      <View style={style.itemLeft}>
         <View style={style.square}></View>
-        <Text style={style.itemText}>{props.Text}</Text>
+        <Text style={style.itemText}>{props.text}</Text>
      </View>
         <View style={style.circular}></View>
     </View>
@@ -18,7 +18,7 @@ const Task = (props) =>{
 
 const style =StyleSheet.create({
     item:{
-        backgroundColor:"#fff",
+        backgroundColor:"#D5F5E3",
         padding:15,
         borderRadius:10,
         flexDirection:"row",
@@ -34,7 +34,7 @@ const style =StyleSheet.create({
     square:{
         width:24,
         height:24,
-        backgroundColor:"#39312D",
+        backgroundColor:"#229954",
         opacity:0.4,
         borderRadius:5,
         marginRight:15,
@@ -45,7 +45,7 @@ const style =StyleSheet.create({
     circular:{
         width:12,
         height:12,
-        borderColor:"#39312D",
+        borderColor:"#229954",
         borderWidth:2,
         borderRadius:5,
     },
